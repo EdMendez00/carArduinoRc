@@ -49,59 +49,46 @@ void loop() {
 }
 
 void carRC(char command) {
-  switch (command) {
-    case FORWARD:
-      // ESTOS HARAN QUE VAYA PARA ADELANTE EL CARRITO.
-      digitalWrite(Motor1A, HIGH);
-      digitalWrite(Motor1B, LOW);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, HIGH);
-      digitalWrite(Motor2B, LOW);
-      analogWrite(pinENB, 255);
-      break;
-
-    case BACKWARD:
-      digitalWrite(Motor1A, LOW);
-      digitalWrite(Motor1B, HIGH);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, LOW);
-      digitalWrite(Motor2B, HIGH);
-      analogWrite(pinENB, 255);
-      break;
-
-    case START:
-      // START no hace nada en este caso.
-      break;
-
-    case PAUSE:
-      digitalWrite(Motor1A, LOW);
-      digitalWrite(Motor1B, LOW);
-      analogWrite(pinENA, 0);
-
-      digitalWrite(Motor2A, LOW);
-      digitalWrite(Motor2B, LOW);
-      analogWrite(pinENB, 0);
-      break;
-    
-   case CIRCLE:
-      digitalWrite(Motor1A, LOW);
-      digitalWrite(Motor1B, HIGH);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, HIGH);
-      digitalWrite(Motor2B, LOW);
-      analogWrite(pinENB, 255);
-    break;
-
-    case SQUARE:
-      digitalWrite(Motor1A, HIGH);
-      digitalWrite(Motor1B, LOW);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, LOW);
-      digitalWrite(Motor2B, HIGH);
-      analogWrite(pinENB, 255);
-    break;
-
-  }
-
+  if (command == FORWARD){
+    //Adelante
+    digitalWrite(Motor1A, HIGH);
+    digitalWrite(Motor1B, LOW);
+    analogWrite(pinENA, 255);
+    digitalWrite(Motor2A, HIGH);
+    digitalWrite(Motor2B, LOW);
+    analogWrite(pinENB, 255);
+  }else if (command == BACKWARD) {
+    //Reversa
+    digitalWrite(Motor1A, LOW);
+    digitalWrite(Motor1B, HIGH);
+    analogWrite(pinENA, 255);
+    digitalWrite(Motor2A, LOW);
+    digitalWrite(Motor2B, HIGH);
+    analogWrite(pinENB, 255);
+  }else if(command == CIRCLE) {
+    //Izquierda
+    digitalWrite(Motor1A, HIGH);
+    digitalWrite(Motor1B, LOW);
+    analogWrite(pinENA, 255);
+    digitalWrite(Motor2A, LOW);
+    digitalWrite(Motor2B, HIGH);
+    analogWrite(pinENB, 255);
+  }else if(command == SQUARE) {
+    //Derecha
+    digitalWrite(Motor1A, LOW);
+    digitalWrite(Motor1B, HIGH);
+    analogWrite(pinENA, 255);
+    digitalWrite(Motor2A, HIGH);
+    digitalWrite(Motor2B, LOW);
+    analogWrite(pinENB, 255);
 }
-
+  else {
+    //Si deja de soltar los motores se detendran
+    digitalWrite(Motor1A, LOW);
+    digitalWrite(Motor1B, LOW);
+    analogWrite(pinENA, 0);
+    digitalWrite(Motor2A, LOW);
+    digitalWrite(Motor2B, LOW);
+    analogWrite(pinENB, 0);
+  }
+}
