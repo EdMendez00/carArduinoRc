@@ -6,7 +6,8 @@
 #define RIGHT 'R'
 #define START 'A'
 #define PAUSE 'P'
-
+#define SQUARE 'S'
+#define CIRCLE 'C'
 // CONEXIONES PARA EL BLUETOOTH.
 int bluetoothTx = 1; // Cambiar estos pines si es necesario
 int bluetoothRx = 0; // Cambiar estos pines si es necesario
@@ -68,24 +69,6 @@ void carRC(char command) {
       analogWrite(pinENB, 255);
       break;
 
-    case LEFT:
-      digitalWrite(Motor1A, LOW);
-      digitalWrite(Motor1B, HIGH);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, HIGH);
-      digitalWrite(Motor2B, LOW);
-      analogWrite(pinENB, 255);
-      break;
-
-    case RIGHT:
-      digitalWrite(Motor1A, HIGH);
-      digitalWrite(Motor1B, LOW);
-      analogWrite(pinENA, 255);
-      digitalWrite(Motor2A, LOW);
-      digitalWrite(Motor2B, HIGH);
-      analogWrite(pinENB, 255);
-      break;
-
     case START:
       // START no hace nada en este caso.
       break;
@@ -99,6 +82,26 @@ void carRC(char command) {
       digitalWrite(Motor2B, LOW);
       analogWrite(pinENB, 0);
       break;
+    
+   case CIRCLE:
+      digitalWrite(Motor1A, LOW);
+      digitalWrite(Motor1B, HIGH);
+      analogWrite(pinENA, 255);
+      digitalWrite(Motor2A, HIGH);
+      digitalWrite(Motor2B, LOW);
+      analogWrite(pinENB, 255);
+    break;
+
+    case SQUARE:
+      digitalWrite(Motor1A, HIGH);
+      digitalWrite(Motor1B, LOW);
+      analogWrite(pinENA, 255);
+      digitalWrite(Motor2A, LOW);
+      digitalWrite(Motor2B, HIGH);
+      analogWrite(pinENB, 255);
+    break;
+
   }
+
 }
 
